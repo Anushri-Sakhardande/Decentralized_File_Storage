@@ -48,24 +48,18 @@ function App() {
   return (
     <>
     <h1 className='text-4xl py-4'>Decentralised File Sharing</h1>
+    <p className="text-black">
+          Account : {account ? account : "Not connected"}
+        </p>
+      <div>
       {!modalOpen && (
-        <button className="bg-blue-500 text-white py-2 px-4 rounded" onClick={() => setModalOpen(true)}>
+        <button className="bg-blue-500 text-white m-2 py-2 px-4 rounded" onClick={() => setModalOpen(true)}>
           Share
         </button>
       )}
       {modalOpen && (
         <Modal setModalOpen={setModalOpen} contract={contract}></Modal>
       )}
-
-      <div className="App">
-        <h1 className="text-white text-3xl">Gdrive 3.0</h1>
-        <div className="bg"></div>
-        <div className="bg bg2"></div>
-        <div className="bg bg3"></div>
-
-        <p className="text-black">
-          Account : {account ? account : "Not connected"}
-        </p>
         <FileUpload
           account={account}
           provider={provider}

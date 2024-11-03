@@ -23,7 +23,7 @@ const Modal = ({ setModalOpen, contract }) => {
   }, [contract]);
 return (
     <>
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-80">
+        <div className="fixed inset-0 flex items-center justify-center bg-black">
             <div className="bg-white rounded-lg shadow-lg p-6 w-96">
                 <div className="text-xl font-semibold mb-4">Share with</div>
                 <div className="mb-4">

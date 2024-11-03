@@ -17,23 +17,21 @@ const FileUpload = ({ contract, account }) => {
           url: "https://api.pinata.cloud/pinning/pinFileToIPFS",
           data: formData,
           headers: {
-            pinata_api_key: `Enter Your Key`,
-            pinata_secret_api_key: `Enter Your Secret Key`,
+            pinata_api_key: import.meta.env.VITE_API_KEY,
+            pinata_secret_api_key: import.meta.env.VITE_API_SECRET,
             "Content-Type": "multipart/form-data",
           },
         });
-        const ImgHash = `https://gateway.pinata.cloud/ipfs/${resFile.data.IpfsHash}`;
-        contract.add(account,ImgHash);
-        alert("Successfully Image Uploaded");
-        setFileName("No image selected");
+        const FileHash = `https://gateway.pinata.cloud/ipfs/${resFile.data.IpfsHash}`;
+        console.log(FileHash);
+        contract.add(account,FileHash);
+        alert("Successfully File Uploaded");
+        setFileName("No file selected");
         setFile(null);
       } catch (e) {
-        alert("Unable to upload image to Pinata");
+        alert("Unable to upload file to Pinata");
       }
     }
-    alert("Successfully Image Uploaded");
-    setFileName("No image selected");
-    setFile(null);
   };
 
   // Retrieve file from system
@@ -48,13 +46,14 @@ const FileUpload = ({ contract, account }) => {
     setFileName(e.target.files[0].name);
     e.preventDefault();
   };
+
 return (
     <div className="flex flex-col items-center justify-center p-3">
         <form className="bg-white p-6 rounded shadow-md" onSubmit={handleSubmit}>
             <label htmlFor="file-upload" className="block text-sm font-medium text-gray-700 mb-2">
                 Choose File
             </label>
-            <input
+            <input 
                 disabled={!account}
                 type="file"
                 id="file-upload"
