@@ -2,6 +2,8 @@ import { useEffect,useState } from 'react'
 import { ethers } from 'ethers'
 import Storage from './artifacts/contracts/Storage.sol/Storage.json'
 import FileUpload from "./components/FileUpload";
+import Modal from "./components/Modal";
+import Display from './components/Display';
 import './App.css'
 
 function App() {
@@ -45,9 +47,34 @@ function App() {
 
   return (
     <>
-      <FileUpload/>
+    <h1 className='text-4xl py-4'>Decentralised File Sharing</h1>
+      {!modalOpen && (
+        <button className="bg-blue-500 text-white py-2 px-4 rounded" onClick={() => setModalOpen(true)}>
+          Share
+        </button>
+      )}
+      {modalOpen && (
+        <Modal setModalOpen={setModalOpen} contract={contract}></Modal>
+      )}
+
+      <div className="App">
+        <h1 className="text-white text-3xl">Gdrive 3.0</h1>
+        <div className="bg"></div>
+        <div className="bg bg2"></div>
+        <div className="bg bg3"></div>
+
+        <p className="text-black">
+          Account : {account ? account : "Not connected"}
+        </p>
+        <FileUpload
+          account={account}
+          provider={provider}
+          contract={contract}
+        ></FileUpload>
+        <Display contract={contract} account={account}></Display>
+      </div>
     </>
   )
 }
 
-export default App
+export default App;

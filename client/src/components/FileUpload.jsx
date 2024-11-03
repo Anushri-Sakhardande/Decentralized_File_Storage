@@ -1,8 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
-const FileUpload = ({ contract, account, provider }) => {
+const FileUpload = ({ contract, account }) => {
   const [file, setFile] = useState(null);
   const [fileName, setFileName] = useState("No file selected");
+
+  //Upload file to IPFS
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (file) {
@@ -33,6 +35,8 @@ const FileUpload = ({ contract, account, provider }) => {
     setFileName("No image selected");
     setFile(null);
   };
+
+  // Retrieve file from system
   const retrieveFile = (e) => {
     const data = e.target.files[0]; //files array of files object
     // console.log(data);
@@ -45,10 +49,10 @@ const FileUpload = ({ contract, account, provider }) => {
     e.preventDefault();
   };
 return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex flex-col items-center justify-center p-3">
         <form className="bg-white p-6 rounded shadow-md" onSubmit={handleSubmit}>
             <label htmlFor="file-upload" className="block text-sm font-medium text-gray-700 mb-2">
-                Choose Image
+                Choose File
             </label>
             <input
                 disabled={!account}
@@ -58,7 +62,7 @@ return (
                 onChange={retrieveFile}
                 className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
             />
-            <span className="block text-sm text-gray-500 mt-2">Image: {fileName}</span>
+            <span className="block text-sm text-gray-500 mt-2">File: {fileName}</span>
             <button
                 type="submit"
                 className="mt-4 w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 disabled:opacity-50"
