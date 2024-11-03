@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@nomicfoundation/hardhat-ignition": "^0.15.7",
+    "solc": "^0.8.28"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "hardhat": "^2.22.15"
+  }
+}
