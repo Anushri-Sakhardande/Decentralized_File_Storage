@@ -23,7 +23,7 @@ const FileUpload = ({ contract, account }) => {
           },
         });
         const FileHash = `https://gateway.pinata.cloud/ipfs/${resFile.data.IpfsHash}`;
-        console.log(FileHash);
+        //console.log(FileHash);
         contract.add(account,FileHash);
         alert("Successfully File Uploaded");
         setFileName("No file selected");

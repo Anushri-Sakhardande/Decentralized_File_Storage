@@ -35,7 +35,7 @@ function App() {
           Storage.abi,
           signer
         );
-        console.log(contract);
+        //console.log(contract);
         setContract(contract);
         setProvider(provider);
       } else {
