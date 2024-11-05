@@ -51,7 +51,7 @@ return (
     <div className="flex flex-col items-center justify-center p-3">
         <form className="bg-white p-6 rounded shadow-md" onSubmit={handleSubmit}>
             <label htmlFor="file-upload" className="block text-sm font-medium text-gray-700 mb-2">
-                Choose File
+                Put your files here
             </label>
             <input 
                 disabled={!account}
@@ -67,7 +67,7 @@ return (
                 className="mt-4 w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 disabled:opacity-50"
                 disabled={!file}
             >
-                Upload File
+                Upload 
             </button>
         </form>
     </div>

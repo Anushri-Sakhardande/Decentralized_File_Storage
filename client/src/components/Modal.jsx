@@ -1,10 +1,21 @@
 import { useEffect } from "react";
 const Modal = ({ setModalOpen, contract }) => {
-  const sharing = async () => {
+  const allowAcess = async () => {
     const address = document.querySelector(".address").value;
     await contract.allow(address);
     setModalOpen(false);
   };
+  const disallowAccess = async () => {
+    try {
+        const address = document.querySelector(".address").value;
+        await contract.disallow(address);
+      alert("Access revoked successfully.");
+    } catch (e) {
+      console.error(e);
+      alert("Failed to revoke access.");
+    }
+  };
+  
   useEffect(() => {
     const accessList = async () => {
       const addressList = await contract.shareAccess();
@@ -23,7 +34,7 @@ const Modal = ({ setModalOpen, contract }) => {
   }, [contract]);
 return (
     <>
-        <div className="fixed inset-0 flex items-center justify-center bg-black">
+        <div className="fixed z-50 inset-0 flex items-center justify-center bg-black bg-opacity-70">
             <div className="bg-white rounded-lg shadow-lg p-6 w-96">
                 <div className="text-xl font-semibold mb-4">Share with</div>
                 <div className="mb-4">
@@ -47,9 +58,13 @@ return (
                     >
                         Cancel
                     </button>
-                    <button onClick={() => sharing()} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+                    <button onClick={() => allowAcess()} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
                         Share
                     </button>
+                    <button onClick={() => disallowAccess()} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+                        Remove
+                    </button>
+
                 </div>
             </div>
         </div>

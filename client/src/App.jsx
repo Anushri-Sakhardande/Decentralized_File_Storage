@@ -1,10 +1,10 @@
-import { useEffect,useState } from 'react'
-import { ethers } from 'ethers'
-import Storage from './artifacts/contracts/Storage.sol/Storage.json'
+import { useEffect, useState } from "react";
+import { ethers } from "ethers";
+import Storage from "./artifacts/contracts/Storage.sol/Storage.json";
 import FileUpload from "./components/FileUpload";
 import Modal from "./components/Modal";
-import Display from './components/Display';
-import './App.css'
+import Display from "./components/Display";
+import "./App.css";
 
 function App() {
   const [account, setAccount] = useState("");
@@ -47,28 +47,34 @@ function App() {
 
   return (
     <>
-    <h1 className='text-4xl py-4'>Decentralised File Sharing</h1>
-    <p className="text-black">
-          Account : {account ? account : "Not connected"}
-        </p>
+      <h1 className="text-4xl py-4">Decentralised File Sharing</h1>
+      <p className="text-black">
+        Account : {account ? account : "Not connected"}
+      </p>
       <div>
-      {!modalOpen && (
-        <button className="bg-blue-500 text-white m-2 py-2 px-4 rounded" onClick={() => setModalOpen(true)}>
-          Share
-        </button>
-      )}
-      {modalOpen && (
-        <Modal setModalOpen={setModalOpen} contract={contract}></Modal>
-      )}
+        {!modalOpen && (
+          <button
+            className="bg-blue-500 text-white m-2 py-2 px-4 rounded"
+            onClick={() => setModalOpen(true)}
+          >
+            Share
+          </button>
+        )}
+        {modalOpen && (
+          <Modal setModalOpen={setModalOpen} contract={contract}></Modal>
+        )}
         <FileUpload
           account={account}
           provider={provider}
           contract={contract}
         ></FileUpload>
-        <Display contract={contract} account={account}></Display>
+        <Display 
+        contract={contract} 
+        account={account}>
+        </Display>
       </div>
     </>
-  )
+  );
 }
 
 export default App;

@@ -30,7 +30,7 @@ const Display = ({ contract, account }) => {
           rel="noopener noreferrer"
           className="download-link"
         >
-          Download File {i + 1}
+          File {i + 1}
         </a>
       ));
       setData(downloadLinks);
@@ -41,7 +41,7 @@ const Display = ({ contract, account }) => {
 
   return (
     <>
-      <div className="flex flex-wrap justify-center">{data}</div>
+      <div className="flex flex-col justify-center">{data}</div>
       <input
         type="text"
         placeholder="Enter Address"
