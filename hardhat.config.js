@@ -11,7 +11,7 @@ module.exports = {
     }
   },
   ignition: {
-    modulePath: "deployments/deploy.js",
+    modulePath: "scripts/deploy.js",
   },
   paths: {
     artifacts: "./client/src/artifacts",

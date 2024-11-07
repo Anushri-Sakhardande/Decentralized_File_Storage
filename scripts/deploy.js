@@ -1,7 +1,7 @@
 const hre = require("hardhat");
 
 async function main() {
-  const Storage = await hre.ethers.getContractFactory("Storage");
+  const Storage = await hre.ethers.getContractFactory("StorageMarketplace");
   const storage = await Storage.deploy();
 
   //await storage.deployed();
